@@ -7,13 +7,18 @@
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": ["portfolio", "contact", "nodemailer"],
+  "keywords": [
+    "portfolio",
+    "contact",
+    "nodemailer"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.18.2",
-    "nodemailer": "^6.9.7",
     "cors": "^2.8.5",
-    "dotenv": "^16.3.1"
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.3.1",
+    "nodemailer": "^6.9.7"
   }
 }

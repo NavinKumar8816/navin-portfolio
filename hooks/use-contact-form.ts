@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useToast } from './use-toast'
 
+// Get API URL from environment or fallback to localhost
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+
 interface ContactFormData {
   name: string
   email: string
@@ -81,7 +84,7 @@ export function useContactForm() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
