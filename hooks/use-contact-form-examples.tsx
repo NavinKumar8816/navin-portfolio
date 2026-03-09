@@ -21,7 +21,7 @@ export function SimpleWorkingContactForm() {
     <form onSubmit={handleSubmit} className="space-y-6 max-w-md mx-auto">
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium mb-2">Name *</label>
+        <label className="block text-sm font-medium mb-2 h-5">Name *</label>
         <input
           type="text"
           name="name"
@@ -33,12 +33,14 @@ export function SimpleWorkingContactForm() {
             errors.name ? 'border-red-500 bg-red-50' : 'border-gray-300'
           }`}
         />
-        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
+        <div className="h-5 mt-1">
+          {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+        </div>
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-medium mb-2">Email *</label>
+        <label className="block text-sm font-medium mb-2 h-5">Email *</label>
         <input
           type="email"
           name="email"
@@ -50,7 +52,9 @@ export function SimpleWorkingContactForm() {
             errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'
           }`}
         />
-        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+        <div className="h-5 mt-1">
+          {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+        </div>
       </div>
 
       {/* Project Idea (optional) */}
@@ -68,7 +72,7 @@ export function SimpleWorkingContactForm() {
 
       {/* Message */}
       <div>
-        <label className="block text-sm font-medium mb-2">Message *</label>
+        <label className="block text-sm font-medium mb-2 h-5">Message *</label>
         <textarea
           name="message"
           value={formData.message}
@@ -80,14 +84,16 @@ export function SimpleWorkingContactForm() {
             errors.message ? 'border-red-500 bg-red-50' : 'border-gray-300'
           }`}
         />
-        {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+        <div className="h-5 mt-1">
+          {errors.message && <p className="text-red-500 text-xs">{errors.message}</p>}
+        </div>
       </div>
 
       {/* Submit Button */}
       <button
         type="submit"
         disabled={isLoading || submitted}
-        className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all ${
+        className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 transition-all h-12 ${
           submitted
             ? 'bg-green-500 text-white'
             : isLoading
@@ -131,12 +137,8 @@ export function AnimatedWorkingContactForm() {
       animate={{ opacity: 1 }}
     >
       {/* Name */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
-      >
-        <label className="block text-sm font-medium mb-2">Name *</label>
+      <div>
+        <label className="block text-sm font-medium mb-2 h-5">Name *</label>
         <input
           type="text"
           name="name"
@@ -148,16 +150,14 @@ export function AnimatedWorkingContactForm() {
             errors.name ? 'border-red-500' : 'border-gray-300'
           }`}
         />
-        {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-      </motion.div>
+        <div className="h-5 mt-1">
+          {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+        </div>
+      </div>
 
       {/* Email */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-      >
-        <label className="block text-sm font-medium mb-2">Email *</label>
+      <div>
+        <label className="block text-sm font-medium mb-2 h-5">Email *</label>
         <input
           type="email"
           name="email"
@@ -169,16 +169,14 @@ export function AnimatedWorkingContactForm() {
             errors.email ? 'border-red-500' : 'border-gray-300'
           }`}
         />
-        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
-      </motion.div>
+        <div className="h-5 mt-1">
+          {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+        </div>
+      </div>
 
       {/* Message */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-      >
-        <label className="block text-sm font-medium mb-2">Message *</label>
+      <div>
+        <label className="block text-sm font-medium mb-2 h-5">Message *</label>
         <textarea
           name="message"
           value={formData.message}
@@ -190,16 +188,16 @@ export function AnimatedWorkingContactForm() {
             errors.message ? 'border-red-500' : 'border-gray-300'
           }`}
         />
-        {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
-      </motion.div>
+        <div className="h-5 mt-1">
+          {errors.message && <p className="text-red-500 text-xs">{errors.message}</p>}
+        </div>
+      </div>
 
       {/* Submit Button */}
-      <motion.button
+      <button
         type="submit"
         disabled={isLoading || submitted}
-        whileHover={!isLoading && !submitted ? { scale: 1.02 } : {}}
-        whileTap={!isLoading && !submitted ? { scale: 0.98 } : {}}
-        className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 ${
+        className={`w-full py-3 rounded-lg font-semibold flex items-center justify-center gap-2 h-12 transition-all ${
           submitted
             ? 'bg-green-500 text-white'
             : isLoading
@@ -220,7 +218,7 @@ export function AnimatedWorkingContactForm() {
         ) : (
           <>Send Message</>
         )}
-      </motion.button>
+      </button>
     </motion.form>
   )
 }

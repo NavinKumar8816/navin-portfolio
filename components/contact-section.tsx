@@ -8,6 +8,9 @@ import { CVDownload } from './cv-download'
 import { SchedulingBooking } from './scheduling-booking'
 import { Spinner } from './ui/spinner'
 
+// Get API URL from environment or fallback to localhost
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
+
 export function ContactSection() {
   const [formData, setFormData] = useState({
     name: '',
@@ -75,7 +78,7 @@ export function ContactSection() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -170,12 +173,8 @@ export function ContactSection() {
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-              >
-                <div className="flex items-center justify-between mb-2">
+              <div>
+                <div className="flex items-center justify-between mb-2 h-5">
                   <label className="block text-sm font-medium text-gray-300">Name</label>
                   {errors.name && (
                     <span className="text-xs text-red-400 flex items-center gap-1">
@@ -197,15 +196,11 @@ export function ContactSection() {
                   }`}
                   placeholder="Your name"
                 />
-              </motion.div>
+              </div>
 
               {/* Email */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <div className="flex items-center justify-between mb-2">
+              <div>
+                <div className="flex items-center justify-between mb-2 h-5">
                   <label className="block text-sm font-medium text-gray-300">Email</label>
                   {errors.email && (
                     <span className="text-xs text-red-400 flex items-center gap-1">
@@ -227,14 +222,10 @@ export function ContactSection() {
                   }`}
                   placeholder="your@email.com"
                 />
-              </motion.div>
+              </div>
 
               {/* Project Idea */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
+              <div>
                 <label className="block text-sm font-medium mb-2 text-gray-300">Project Idea</label>
                 <input
                   type="text"
@@ -244,15 +235,11 @@ export function ContactSection() {
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg focus:border-primary outline-none transition-colors text-foreground placeholder-gray-500"
                   placeholder="Brief description of your project"
                 />
-              </motion.div>
+              </div>
 
               {/* Message */}
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <div className="flex items-center justify-between mb-2">
+              <div>
+                <div className="flex items-center justify-between mb-2 h-5">
                   <label className="block text-sm font-medium text-gray-300">Message</label>
                   {errors.message && (
                     <span className="text-xs text-red-400 flex items-center gap-1">
@@ -274,15 +261,13 @@ export function ContactSection() {
                   }`}
                   placeholder="Tell me more about your project..."
                 />
-              </motion.div>
+              </div>
 
               {/* Submit Button */}
-              <motion.button
+              <button
                 type="submit"
                 disabled={isLoading || submitted}
-                whileHover={!isLoading && !submitted ? { scale: 1.02 } : {}}
-                whileTap={!isLoading && !submitted ? { scale: 0.98 } : {}}
-                className={`w-full py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 ${
+                className={`w-full py-3 rounded-lg font-semibold transition-all flex items-center justify-center gap-2 h-12 ${
                   submitted
                     ? 'bg-green-500/20 border border-green-500/50 text-green-300'
                     : isLoading
@@ -291,26 +276,22 @@ export function ContactSection() {
                 }`}
               >
                 {submitted ? (
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="flex items-center gap-2"
-                  >
+                  <div className="flex items-center gap-2">
                     <Check className="w-5 h-5" />
                     <span>Message sent successfully!</span>
-                  </motion.div>
+                  </div>
                 ) : isLoading ? (
-                  <motion.div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2">
                     <Spinner />
                     <span>Sending message...</span>
-                  </motion.div>
+                  </div>
                 ) : (
                   <>
                     Send Message
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}
-              </motion.button>
+              </button>
             </form>
           </motion.div>
 
