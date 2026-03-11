@@ -12,7 +12,7 @@ export function ProjectsSection() {
       title: 'JanShakti',
       description: 'AI powered political platform leveraging LLMs and RAG systems to provide intelligent political insights and civic engagement tools.',
       tech: ['React', 'Node.js', 'MongoDB', 'OpenAI API', 'RAG'],
-      imageUrl: '/projects/janshakti.jpg ',
+      imageUrl: '/projects/janshakti.JPG ',
       github: 'https://github.com/NavinKumar8816/janshakti-backend',
       demo: 'https://janshakti-frontend.vercel.app/',
       featured: true,
