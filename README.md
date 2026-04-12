@@ -251,7 +251,6 @@ npm run dev          # Dev mode with nodemon
 ## 📧 Contact Information
 
 - **Email**: [Navinkumar.dev01@gmail.com](mailto:Navinkumar.dev01@gmail.com)
-- **Phone**: +91 9234126976
 - **Location**: Mohali, Punjab | Available for remote projects worldwide
 - **LinkedIn**: [linkedin.com/in/navin-kumar123](https://www.linkedin.com/in/navin-kumar123/)
 - **GitHub**: [github.com/NavinKumar8816](https://github.com/NavinKumar8816)
@@ -260,9 +259,8 @@ npm run dev          # Dev mode with nodemon
 
 ## 🌐 Live Demo
 
-- **Portfolio**: [https://navin-portfolio.vercel.app](https://navin-portfolio.vercel.app)
-- **Services Page**: [https://navin-portfolio.vercel.app/services](https://navin-portfolio.vercel.app/services)
-- **Backend API**: [https://navin-portfolio.onrender.com](https://navin-portfolio.onrender.com)
+- **Portfolio**: [https://navin-portfolio-gamma.vercel.app](https://navin-portfolio-gamma.vercel.app)
+- **Services Page**: [https://navin-portfolio-gamma.vercel.app/services](https://navin-portfolio-gamma.vercel.app/services)
 
 ---
 
@@ -423,5 +421,5 @@ Happy Clients:    Growing 📈
 
 ---
 
-**Last Updated**: April 2024  
+**Last Updated**: April 2025  
 **Version**: 1.0.0
