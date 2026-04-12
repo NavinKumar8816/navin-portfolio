@@ -12,7 +12,7 @@ export function ProjectsSection() {
       title: 'JanShakti',
       description: 'AI powered political platform leveraging LLMs and RAG systems to provide intelligent political insights and civic engagement tools.',
       tech: ['React', 'Node.js', 'MongoDB', 'OpenAI API', 'RAG'],
-      imageUrl: '/projects/janshakti.JPG ',
+      imageUrl: '/projects/janshakti.JPG',
       github: 'https://github.com/NavinKumar8816/janshakti-backend',
       demo: 'https://janshakti-frontend.vercel.app/',
       featured: true,
@@ -21,7 +21,7 @@ export function ProjectsSection() {
       title: 'AI Smart Hospital System',
       description: 'Comprehensive healthcare platform with AI-powered diagnostics, patient management, and intelligent scheduling using advanced ML models.',
       tech: ['Next.js', 'Python', 'FastAPI', 'PostgreSQL', 'TensorFlow'],
-      imageUrl: '/projects/hospital-system.jpg', // Add your image here
+      imageUrl: '/projects/hospital-system.jpg',
       github: 'https://github.com/NavinKumar8816/hospital-system',
       demo: 'https://hospital-system.vercel.app/',
       featured: true,
@@ -30,7 +30,7 @@ export function ProjectsSection() {
       title: 'Job Portal Platform',
       description: 'Full-stack job portal with AI-powered job matching, resume screening, and automated candidate recommendations using NLP.',
       tech: ['Next.js', 'Express', 'MongoDB', 'AWS', 'ML Models'],
-      imageUrl: '/projects/job-portal.jpg', // Add your image here
+      imageUrl: '/projects/job-portal.JPG',
       github: 'https://github.com/NavinKumar8816',
       demo: 'https://job-portal-teal.vercel.app/',
       featured: true,
