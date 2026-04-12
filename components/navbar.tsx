@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
-import { Menu, X } from 'lucide-react'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -13,7 +13,6 @@ export function Navbar() {
     { href: '/#about', label: 'About' },
     { href: '/#skills', label: 'Skills' },
     { href: '/#projects', label: 'Projects' },
-    { href: '/services', label: 'Services' },
     { href: '/#testimonials', label: 'Testimonials' },
     { href: '/#contact', label: 'Contact' },
   ]
@@ -52,15 +51,25 @@ export function Navbar() {
           ))}
         </nav>
 
-        {/* CTA Button - Desktop */}
-        <motion.a
-          href="#contact"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="hidden md:block px-6 py-2 bg-gradient-to-r from-primary to-accent text-background rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all text-sm"
-        >
-          Get In Touch
-        </motion.a>
+        {/* CTA Buttons - Desktop */}
+        <div className="hidden md:flex items-center gap-3">
+          <motion.a
+            href="/services"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-2 bg-white/5 border border-primary/50 text-primary rounded-lg font-semibold hover:bg-primary/10 hover:border-primary transition-all text-sm"
+          >
+            Services
+          </motion.a>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="px-6 py-2 bg-gradient-to-r from-primary to-accent text-background rounded-lg font-semibold hover:shadow-lg hover:shadow-primary/50 transition-all text-sm"
+          >
+            Get In Touch
+          </motion.a>
+        </div>
 
         {/* Mobile Menu Button */}
         <motion.button
@@ -93,14 +102,24 @@ export function Navbar() {
               {link.label}
             </Link>
           ))}
-          <motion.a
-            href="#contact"
-            onClick={handleLinkClick}
-            whileTap={{ scale: 0.95 }}
-            className="block w-full px-6 py-2 bg-gradient-to-r from-primary to-accent text-background rounded-lg font-semibold text-center"
-          >
-            Get In Touch
-          </motion.a>
+          <div className="flex gap-3 pt-4">
+            <motion.a
+              href="/services"
+              onClick={handleLinkClick}
+              whileTap={{ scale: 0.95 }}
+              className="flex-1 px-4 py-2 bg-white/5 border border-primary/50 text-primary rounded-lg font-semibold text-center hover:bg-primary/10 transition-all text-sm"
+            >
+              Services
+            </motion.a>
+            <motion.a
+              href="#contact"
+              onClick={handleLinkClick}
+              whileTap={{ scale: 0.95 }}
+              className="flex-1 px-4 py-2 bg-gradient-to-r from-primary to-accent text-background rounded-lg font-semibold text-center"
+            >
+              Get In Touch
+            </motion.a>
+          </div>
         </div>
       </motion.nav>
     </motion.header>

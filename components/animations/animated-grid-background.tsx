@@ -8,10 +8,10 @@ interface AnimatedGridBackgroundProps {
 
 export function AnimatedGridBackground({ className = '' }: AnimatedGridBackgroundProps) {
   return (
-    <div className={`absolute inset-0 overflow-hidden ${className}`}>
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       {/* Main grid */}
       <motion.svg
-        className="absolute inset-0 w-full h-full opacity-20"
+        className="absolute inset-0 w-full h-full opacity-20 pointer-events-none"
         viewBox="0 0 1200 800"
         preserveAspectRatio="none"
       >
@@ -65,7 +65,7 @@ export function AnimatedGridBackground({ className = '' }: AnimatedGridBackgroun
 
       {/* Animated glow lines */}
       <motion.div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
           background: 'linear-gradient(90deg, transparent 0%, rgba(6, 214, 255, 0.3) 50%, transparent 100%)',
         }}

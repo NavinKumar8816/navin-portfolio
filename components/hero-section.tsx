@@ -15,22 +15,23 @@ export function HeroSection() {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Cyberpunk Matrix Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-purple-950/20 to-slate-950">
-        <AnimatedGridBackground className="opacity-30" />
-        <div className="absolute inset-0 glitch-bg" />
-        <div className="absolute inset-0 holographic-scan opacity-20" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-purple-950/20 to-slate-950 pointer-events-none">
+        <AnimatedGridBackground className="opacity-30 pointer-events-none" />
+        <div className="absolute inset-0 glitch-bg pointer-events-none" />
+        <div className="absolute inset-0 holographic-scan opacity-20 pointer-events-none" />
       </div>
       
       {/* Floating Gradient Blobs */}
-      <FloatingBlobs count={3} />
+      <FloatingBlobs count={3} className="pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 py-20">
+      <div className="relative z-20 max-w-5xl mx-auto px-6 py-20 pointer-events-auto overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center"
+          style={{ willChange: 'auto' }}
         >
           {/* Badge */}
           <motion.div
@@ -49,6 +50,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-6xl md:text-8xl font-black mb-6 leading-tight"
+            style={{ willChange: 'opacity', minHeight: 'min-content' }}
           >
             <div className="mb-4">
               <GlitchText text="AI ENGINEER" intensity="high" className="neon-glow-cyberpunk text-5xl md:text-7xl" />
@@ -70,7 +72,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="mb-12 max-w-3xl mx-auto"
           >
-            <div className="text-lg md:text-xl text-cyan-200 leading-relaxed font-mono mb-8">
+            <div className="text-lg md:text-xl text-cyan-200 leading-relaxed font-mono mb-8 min-h-[120px] flex items-center justify-center">
               <TypingText
                 texts={[
                   'I build AI-powered products that turn ideas into reality',
@@ -100,7 +102,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16 min-h-[60px]"
           >
             <Link href="#projects">
               <motion.button
@@ -151,7 +153,8 @@ export function HeroSection() {
       <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
+        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 pointer-events-none"
+        style={{ willChange: 'transform' }}
       >
         <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
           <motion.div

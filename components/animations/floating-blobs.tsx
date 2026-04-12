@@ -21,11 +21,11 @@ export function FloatingBlobs({ count = 3, className = '' }: FloatingBlobsProps)
   }))
 
   return (
-    <div className={`absolute inset-0 overflow-hidden ${className}`}>
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
       {blobs.map((blob) => (
         <motion.div
           key={blob.id}
-          className={`absolute rounded-full blur-3xl bg-gradient-to-r ${blob.colors[blob.id % 3]} opacity-40`}
+          className={`absolute rounded-full blur-3xl bg-gradient-to-r ${blob.colors[blob.id % 3]} opacity-40 pointer-events-none`}
           style={{
             width: blob.size,
             height: blob.size,

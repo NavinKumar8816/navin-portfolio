@@ -1,9 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useToast } from '@/hooks/use-toast'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Calendar, Send } from 'lucide-react'
-import Link from 'next/link'
+import { Calendar, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { useState } from 'react'
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'
 
 export function BookingSection() {
   const [formData, setFormData] = useState({
@@ -17,26 +19,64 @@ export function BookingSection() {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const { toast } = useToast()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log('Form submitted:', formData)
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      projectType: '',
-      budget: '',
-      timeline: '',
-      description: ''
-    })
+    setIsLoading(true)
+
+    try {
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          projectIdea: `${formData.projectType} | Budget: ${formData.budget} | Timeline: ${formData.timeline}`,
+          message: formData.description,
+        }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setSubmitted(true)
+        toast({
+          description: '✅ Project inquiry sent successfully! I will get back to you soon.',
+        })
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          projectType: '',
+          budget: '',
+          timeline: '',
+          description: ''
+        })
+        setTimeout(() => setSubmitted(false), 3000)
+      } else {
+        toast({
+          description: `❌ ${data.error}`,
+          variant: 'destructive',
+        })
+      }
+    } catch (error) {
+      console.error('Error:', error)
+      toast({
+        description: '❌ Failed to send inquiry. Please try again.',
+        variant: 'destructive',
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -70,8 +110,8 @@ export function BookingSection() {
               <Mail className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Email</h3>
-                <a href="mailto:your-email@example.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  your-email@example.com
+                <a href="mailto:Navinkumar.dev01@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  Navinkumar.dev01@gmail.com
                 </a>
               </div>
             </div>
@@ -82,8 +122,8 @@ export function BookingSection() {
               <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Phone</h3>
-                <a href="tel:+1234567890" className="text-muted-foreground hover:text-primary transition-colors">
-                  +1 (234) 567-890
+                <a href="tel:+919234126976" className="text-muted-foreground hover:text-primary transition-colors">
+                  +91 9234126976
                 </a>
               </div>
             </div>
@@ -95,7 +135,8 @@ export function BookingSection() {
               <div>
                 <h3 className="font-semibold mb-1">Location</h3>
                 <p className="text-muted-foreground">
-                  Available for remote projects worldwide
+                  Available for remote projects worldwide<br />
+                  Reg-Office - Mohali, Punjab
                 </p>
               </div>
             </div>
@@ -110,12 +151,12 @@ export function BookingSection() {
                   Let's discuss your project and find the best approach
                 </p>
                 <a
-                  href="https://calendly.com/your-calendar"
+                  href="https://calendar.app.google/jvPNkNqdgM67A8TTA"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors"
                 >
-                  Book on Calendly
+                  Book on Google Calendar
                   <span>→</span>
                 </a>
               </div>
@@ -257,11 +298,23 @@ export function BookingSection() {
 
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.05 }}
+                disabled={isLoading || submitted}
+                whileHover={{ scale: isLoading ? 1 : 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="btn-gradient-neon flex items-center justify-center gap-2 w-full py-4"
+                className={`flex items-center justify-center gap-2 w-full py-4 rounded-lg font-semibold transition-all ${
+                  submitted
+                    ? 'bg-green-500/20 border border-green-500/50 text-green-300'
+                    : isLoading
+                    ? 'btn-gradient-neon opacity-50 cursor-not-allowed'
+                    : 'btn-gradient-neon'
+                }`}
               >
-                {submitted ? 'Message Sent! 🎉' : (
+                {submitted ? 'Message Sent! 🎉' : isLoading ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Sending...
+                  </>
+                ) : (
                   <>
                     Send Project Inquiry
                     <Send className="w-4 h-4" />

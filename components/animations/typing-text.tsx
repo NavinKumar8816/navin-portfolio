@@ -57,7 +57,7 @@ export function TypingText({
   }, [])
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center min-h-[2.5rem] max-h-[2.5rem] overflow-hidden">
       <span className={className}>{displayText}</span>
       {showCursor && <div className={`inline-block animate-pulse ${cursorClassName}`} />}
     </div>

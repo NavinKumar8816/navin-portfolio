@@ -142,11 +142,11 @@ export function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="relative py-20 px-6">
+    <section id="contact" className="relative py-20 px-6 z-10">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-accent/5 pointer-events-none" />
 
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative z-20 max-w-5xl mx-auto">
         {/* Section Title */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -163,15 +163,16 @@ export function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 relative z-20">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="pointer-events-auto"
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 pointer-events-auto">
               {/* Name */}
               <div>
                 <div className="flex items-center justify-between mb-2 h-5">
@@ -301,7 +302,7 @@ export function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-8 pointer-events-auto"
           >
             {/* Direct Contact */}
             <div>
