@@ -148,7 +148,7 @@ app.post('/api/contact', async (req, res) => {
   }
 })
 
-console.error("FULL ERROR:", error);
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
