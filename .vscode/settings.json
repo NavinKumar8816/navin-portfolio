@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^git add components/projects-section\\.tsx && git commit -m \"fix: correct image file paths - match actual filenames with proper casing\"$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

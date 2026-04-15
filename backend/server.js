@@ -24,12 +24,15 @@ app.use(limiter) // Apply rate limiting globally
 
 // Configure Nodemailer
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: "smtp.gmail.com",
+  port: 587,
+  secure: false,
   auth: {
     user: process.env.EMAIL,
     pass: process.env.EMAIL_PASS,
   },
-})
+  connectionTimeout: 10000, // 10 seconds
+});
 
 // Verify transporter connection
 transporter.verify((error, success) => {
@@ -144,6 +147,8 @@ app.post('/api/contact', async (req, res) => {
     })
   }
 })
+
+console.error("FULL ERROR:", error);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
