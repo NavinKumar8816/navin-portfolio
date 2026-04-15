@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { ExternalLink, Github, Linkedin, Mail } from 'lucide-react'
 import Link from 'next/link'
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -10,17 +10,17 @@ export function Footer() {
   const socialLinks = [
     {
       icon: Github,
-      href: '#',
+      href: 'https://github.com/NavinKumar8816',
       label: 'GitHub',
     },
     {
       icon: Linkedin,
-      href: '#',
+      href: 'https://www.linkedin.com/in/navin-kumar123/',
       label: 'LinkedIn',
     },
     {
       icon: Mail,
-      href: 'mailto:navin@example.com',
+      href: 'mailto:navinkumar.dev01@gmail.com',
       label: 'Email',
     },
   ]
